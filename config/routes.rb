@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :restaurants do
+    # nesting routes
+    # restaurants/1/reviews/new
+    resources :reviews, only: [ :new, :create ]
+  end
+
+    # member => use when you want one restaurant in particular
+    # /restaurants/1/chef
+  resources :reviews, only: :destroy
 end
